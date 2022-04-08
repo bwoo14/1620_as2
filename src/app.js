@@ -28,7 +28,7 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
   saveButton.addEventListener('click', saveNote)
 }
 
-function cancelNote(evt){
+function cancelNote(evt) {
   const newNote = document.querySelector('.new-note')
   const save = document.querySelector('.save')
   const cancel = document.querySelector('.cancel')
@@ -47,9 +47,19 @@ function saveNote(evt) {
   const save = document.querySelector('.save')
   const cancel = document.querySelector('.cancel')
 
-  var lines = newNote.value.split('\n')  //gives all lines
-  var firstLine = lines[0]
-  console.log(firstLine)
+  var lines = newNote.value.split('\n')  // gives all lines
+  var title = lines[0] // Isolates the title
+  var body = lines.slice(1) // Body of the note excluding title  
+  var note_id = notes.length + 1
+
+  const savedNote = { //FIX 
+    title: title,
+    noteBody: body,
+    id: note_id
+  }
+
+  notes.push(savedNote) // Save new note to notes list 
+  
 
   newNote.remove()
   save.remove()
