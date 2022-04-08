@@ -47,9 +47,14 @@ function saveNote(evt) {
   const save = document.querySelector('.save')
   const cancel = document.querySelector('.cancel')
 
+  var lines = newNote.value.split('\n')  //gives all lines
+  var firstLine = lines[0]
+  console.log(firstLine)
+
   newNote.remove()
   save.remove()
   cancel.remove()
+
 
   plusButton.addEventListener('click', openNoteSpace) // Allows for plus button to be clicked again
 }
