@@ -19,11 +19,14 @@ function cancelNote(evt){
   note.remove()
   save.remove()
   cancel.remove()
+  plusButton.addEventListener('click', openNoteSpace)
 
 }
 
 function openNoteSpace(evt){
   
+  plusButton.removeEventListener('click', openNoteSpace)
+
   createNoteArea.insertAdjacentHTML("afterend", cancelButtonTemp)
   createNoteArea.insertAdjacentHTML("afterend", saveButtonTemp)
   createNoteArea.insertAdjacentHTML("afterend", note)
