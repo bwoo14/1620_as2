@@ -8,18 +8,21 @@ const notes = [
 
 const plusButton = document.querySelector('.fa-circle-plus')
 const createNoteArea = document.querySelector('.create-note-area')
+const writeNoteArea = document.querySelector('.write-note-area')
 const note = `<textarea class='new-note' rows="35" cols="50"></textarea>`
 const cancelButtonTemp =  `<button class='cancel'>Cancel</button>`
 const saveButtonTemp = `<button class='save'>Save</button>`
+
+const notesList = document.querySelector('.notes-list')
 
 
 function openNoteSpace(evt){ // Opens a blank textarea for note taking
   
   plusButton.removeEventListener('click', openNoteSpace) // Ensures that the plus button cannot be clicked again until note saved or cancelled
 
-  createNoteArea.insertAdjacentHTML("afterend", cancelButtonTemp)
-  createNoteArea.insertAdjacentHTML("afterend", saveButtonTemp)
-  createNoteArea.insertAdjacentHTML("afterend", note)
+  writeNoteArea.insertAdjacentHTML("afterend", cancelButtonTemp)
+  writeNoteArea.insertAdjacentHTML("afterend", saveButtonTemp)
+  writeNoteArea.insertAdjacentHTML("afterend", note)
 
   cancelButton = document.querySelector('.cancel')
   cancelButton.addEventListener('click', cancelNote)
@@ -28,11 +31,12 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
   saveButton.addEventListener('click', saveNote)
 }
 
-function cancelNote(evt) {
+function cancelNote(evt) { // Cancel note button
   const newNote = document.querySelector('.new-note')
   const save = document.querySelector('.save')
   const cancel = document.querySelector('.cancel')
   // Removing cancel button, save button, and the note
+
   newNote.remove()
   save.remove()
   cancel.remove()
@@ -41,11 +45,12 @@ function cancelNote(evt) {
 
 }
 
-function saveNote(evt) {
+function saveNote(evt) { // Save note button
   
   const newNote = document.querySelector('.new-note')
   const save = document.querySelector('.save')
   const cancel = document.querySelector('.cancel')
+
 
   var lines = newNote.value.split('\n')  // gives all lines
   var title = lines[0] // Isolates the title
@@ -59,14 +64,19 @@ function saveNote(evt) {
   }
 
   notes.push(savedNote) // Save new note to notes list 
-  
 
   newNote.remove()
   save.remove()
   cancel.remove()
 
-
+  addNoteToSavedList()
   plusButton.addEventListener('click', openNoteSpace) // Allows for plus button to be clicked again
+}
+
+function addNoteToSavedList() {
+  const newestNote = notes[notes.length - 1]
+  const savedNoteTemplate = `<li id=${newestNote.id}>${newestNote.title}</li>`
+  notesList.insertAdjacentHTML("afterend", savedNoteTemplate)
 }
 
 plusButton.addEventListener('click', openNoteSpace)
