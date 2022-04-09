@@ -51,13 +51,12 @@ function saveNote(evt) { // Save note button
   const save = document.querySelector('.save')
   const cancel = document.querySelector('.cancel')
 
-
   var lines = newNote.value.split('\n')  // gives all lines
   var title = lines[0] // Isolates the title
   var body = lines.slice(1) // Body of the note excluding title  
   var note_id = notes.length + 1
 
-  const savedNote = { //FIX 
+  const savedNote = {
     title: title,
     noteBody: body,
     id: note_id
@@ -69,14 +68,23 @@ function saveNote(evt) { // Save note button
   save.remove()
   cancel.remove()
 
-  addNoteToSavedList()
+  addNoteToSavedList() // Saves note to sidebar
+  const sidebarNote = document.getElementById(note_id)
+  sidebarNote.addEventListener('click', readNote)
+
   plusButton.addEventListener('click', openNoteSpace) // Allows for plus button to be clicked again
 }
 
 function addNoteToSavedList() {
   const newestNote = notes[notes.length - 1]
   const savedNoteTemplate = `<li id=${newestNote.id}>${newestNote.title}</li>`
+
   notesList.insertAdjacentHTML("afterend", savedNoteTemplate)
 }
 
+function readNote(evt) {
+  console.log(evt.target.innerHTML)
+}
+
 plusButton.addEventListener('click', openNoteSpace)
+
