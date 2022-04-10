@@ -1,17 +1,21 @@
 const notes = [
-  { 
-    title: "first note", 
-    noteBody: "this is an example note",
-    id: 1 
-  }
+  //{ 
+  //  title: "first note", 
+  //  noteBody: "this is an example note",
+  //  id: 1 
+  //}
 ]
 
 const plusButton = document.querySelector('.fa-circle-plus')
 const createNoteArea = document.querySelector('.create-note-area')
 const writeNoteArea = document.querySelector('.write-note-area')
-const note = `<textarea class='new-note' rows="35" cols="50"></textarea>`
+const readNoteArea = document.querySelector('.read-note-area')
+
+const noteTemplate = `<textarea class='new-note' rows="35" cols="50"></textarea>`
+
 const cancelButtonTemp =  `<button class='cancel'>Cancel</button>`
 const saveButtonTemp = `<button class='save'>Save</button>`
+const closeButtonTemplate = `<button class='close'>Close</button>`
 
 const notesList = document.querySelector('.notes-list')
 
@@ -22,7 +26,7 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
 
   writeNoteArea.insertAdjacentHTML("afterend", cancelButtonTemp)
   writeNoteArea.insertAdjacentHTML("afterend", saveButtonTemp)
-  writeNoteArea.insertAdjacentHTML("afterend", note)
+  writeNoteArea.insertAdjacentHTML("afterend", noteTemplate)
 
   cancelButton = document.querySelector('.cancel')
   cancelButton.addEventListener('click', cancelNote)
@@ -83,7 +87,24 @@ function addNoteToSavedList() {
 }
 
 function readNote(evt) {
-  console.log(evt.target.innerHTML)
+  let noteToBeRead = {
+    title: "template",
+    noteBody: "template",
+    id: 0 
+  }
+  for (var note of notes) {
+    console.log(note.id == parseInt(evt.target.id))
+    if (note.id == parseInt(evt.target.id)) {
+      noteToBeRead.title = note.title
+      noteToBeRead.noteBody = note.noteBody
+      noteToBeRead.id = note.id
+    }
+  }
+  console.log(noteToBeRead)
+  //const printedNote = `<textarea class='new-note' rows="35" cols="50">
+  //${noteToBeRead.title}${noteToBeRead.body}
+  //</textarea>`
+  //readNoteArea.insertAdjacentHTML()
 }
 
 plusButton.addEventListener('click', openNoteSpace)
