@@ -1,9 +1,9 @@
 const notes = [
-  //{ 
-  //  title: "first note", 
-  //  noteBody: "this is an example note",
-  //  id: 1 
-  //}
+  { 
+    title: "first note", 
+    noteBody: "this is an example note",
+    id: 1 
+  }
 ]
 
 const plusButton = document.querySelector('.fa-circle-plus')
@@ -88,23 +88,29 @@ function addNoteToSavedList() {
 
 function readNote(evt) {
   let noteToBeRead = {
-    title: "template",
-    noteBody: "template",
+    title: "",
+    noteBody: "",
     id: 0 
   }
   for (var note of notes) {
-    console.log(note.id == parseInt(evt.target.id))
     if (note.id == parseInt(evt.target.id)) {
-      noteToBeRead.title = note.title
-      noteToBeRead.noteBody = note.noteBody
+      noteToBeRead.title = note.title  // Saves all values from the note to a new object
+
+      //noteToBeRead.noteBody = note.noteBody
+      for (const item of note.noteBody) {
+        noteToBeRead.title += `${item}\n ` 
+      }
       noteToBeRead.id = note.id
     }
   }
-  console.log(noteToBeRead)
-  //const printedNote = `<textarea class='new-note' rows="35" cols="50">
-  //${noteToBeRead.title}${noteToBeRead.body}
-  //</textarea>`
-  //readNoteArea.insertAdjacentHTML()
+  
+
+  const printedNote = `<textarea class='new-note' rows="35" cols="50">
+  ${noteToBeRead.title}\n
+  ${noteToBeRead.noteBody}
+  </textarea>`
+
+  readNoteArea.insertAdjacentHTML("afterbegin", printedNote)
 }
 
 plusButton.addEventListener('click', openNoteSpace)
