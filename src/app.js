@@ -87,6 +87,7 @@ function addNoteToSavedList() {
 }
 
 function readNote(evt) {
+  
   let noteToBeRead = {
     title: "",
     noteBody: "",
@@ -96,21 +97,32 @@ function readNote(evt) {
     if (note.id == parseInt(evt.target.id)) {
       noteToBeRead.title = note.title  // Saves all values from the note to a new object
 
-      //noteToBeRead.noteBody = note.noteBody
-      for (const item of note.noteBody) {
+      for (const item of note.noteBody) { // Places all of the items in the body list into a single string with line breaks
         noteToBeRead.title += `${item}\n ` 
       }
       noteToBeRead.id = note.id
     }
   }
   
-
-  const printedNote = `<textarea class='new-note' rows="35" cols="50">
+  const printedNote = `<textarea class='edit-note' rows="35" cols="50">
   ${noteToBeRead.title}\n
   ${noteToBeRead.noteBody}
   </textarea>`
 
+  readNoteArea.insertAdjacentHTML("afterbegin", closeButtonTemplate)
   readNoteArea.insertAdjacentHTML("afterbegin", printedNote)
+
+  const closeButton = document.querySelector('.close')
+  closeButton.addEventListener('click', closeNote)
+}
+
+function closeNote() {
+  const openNote = document.querySelector('.edit-note')
+  const closeButton = document.querySelector('.close')
+
+  openNote.remove()
+  closeButton.remove()
+
 }
 
 plusButton.addEventListener('click', openNoteSpace)
