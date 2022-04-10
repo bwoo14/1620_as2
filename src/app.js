@@ -105,11 +105,8 @@ function readNote(evt) {
   }
 
   if (writeNoteArea.contains(document.querySelector('.new-note'))) {
-    console.log('yes')
     removeNoteandButtons()
-  }
-  else {
-    console.log('no')
+    enablePlusButton()
   }
 
   const closeButton = document.querySelector('.close')
