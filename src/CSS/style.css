@@ -170,9 +170,17 @@ footer p {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  margin: 10px;
 }
 
 .saved-note {
   font-family: 'Libre Baskerville', sans-serif;
   width: 150px;
+  color: var(--not-black);
+}
+
+.saved-note-dark {
+  font-family: 'Libre Baskerville', sans-serif;
+  width: 150px;
+  color: var(--drk-white);
 }

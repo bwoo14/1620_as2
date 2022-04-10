@@ -11,7 +11,7 @@ const createNoteArea = document.querySelector('.create-note-area')
 const writeNoteArea = document.querySelector('.write-note-area')
 const readNoteArea = document.querySelector('.read-note-area')
 
-const noteTemplate = `<textarea class='new-note' rows="35" cols="50"></textarea>`
+const noteTemplate = `<textarea class='new-note' rows="35" cols="50" placeholder = "1) Title \n2) Body"></textarea>`
 
 const cancelButtonTemp =  `<button class='cancel'>Cancel</button>`
 const saveButtonTemp = `<button class='save'>Save</button>`
@@ -67,6 +67,8 @@ function saveNote(evt) { // Save note button
   addNoteToSavedList() // Saves note to sidebar
   addClickToSaveNote(note_id)
   enablePlusButton()
+
+  darkThemeNewLi(note_id)
 }
 
 function addClickToSaveNote(note_id) {
@@ -146,7 +148,7 @@ function writeToNoteObject(clickedNote) {
 function formateNoteBody(noteBody) {
   var formattedNote = "\n"
   for (const item of noteBody) { // Places all of the items in the body list into a single string with line breaks
-    formattedNote += `${item}\n ` 
+    formattedNote += `${item}\n` 
   }
   return formattedNote
 }
@@ -171,15 +173,29 @@ function removeNoteandButtons() {
 
 
 
-function dark_theme(){
-  const dark_mode = document.querySelector('.light-theme')
-  
-  return dark_mode.classList.toggle("dark-theme")
+function darkTheme(){
+  const darkMode = document.querySelector('.light-theme')
+  darkMode.classList.toggle("dark-theme")
+  darkThemeLi()
 }
 
+function darkThemeLi() {
+  const darkModeList = document.querySelectorAll('.saved-note')
+  for (const darkLi of darkModeList) {
+    darkLi.classList.toggle("saved-note-dark")
+  }
+}
 
-const darkButton = document.querySelector(".theme-toggle")
-darkButton.addEventListener('change', dark_theme)
+function darkThemeNewLi(note_id) {
+  const darkButton1 = document.querySelector('input')
+  if (darkButton1.checked) {
+    itemToBeDark = document.getElementById(note_id)
+    itemToBeDark.classList.toggle("saved-note-dark")
+  }
+}
+
+var darkButton = document.querySelector(".theme-toggle")
+darkButton.addEventListener('change', darkTheme)
 
 
 enablePlusButton()
