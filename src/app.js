@@ -36,9 +36,6 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
 }
 
 function cancelNote(evt) { // Cancel note button
-  const newNote = document.querySelector('.new-note')
-  const save = document.querySelector('.save')
-  const cancel = document.querySelector('.cancel')
   // Removing cancel button, save button, and the note
 
   removeNoteandButtons()
@@ -83,7 +80,6 @@ function addNoteToSavedList() {
 }
 
 function readNote(evt) {
-  
   let noteToBeRead = {
     title: "",
     noteBody: "",
@@ -93,16 +89,13 @@ function readNote(evt) {
   for (var note of notes) {
     if (note.id == parseInt(evt.target.id)) {
       noteToBeRead.title = note.title  // Saves all values from the note to a new object
-
-      for (const item of note.noteBody) { // Places all of the items in the body list into a single string with line breaks
-        noteToBeRead.title += `${item}\n ` 
-      }
+      noteToBeRead.noteBody = formateNoteBody(note.noteBody)
       noteToBeRead.id = note.id
     }
   }
   
   const printedNote = `<textarea class='edit-note' rows="35" cols="50">
-  ${noteToBeRead.title}\n
+  ${noteToBeRead.title}
   ${noteToBeRead.noteBody}
   </textarea>`
 
@@ -113,6 +106,13 @@ function readNote(evt) {
   closeButton.addEventListener('click', closeNote)
 }
 
+function formateNoteBody(noteBody) {
+  var formattedNote = ""
+  for (const item of noteBody) { // Places all of the items in the body list into a single string with line breaks
+    formattedNote += `${item}\n ` 
+  }
+  return formattedNote
+}
 function closeNote() {
   const openNote = document.querySelector('.edit-note')
   const closeButton = document.querySelector('.close')
@@ -122,6 +122,10 @@ function closeNote() {
 }
 
 function removeNoteandButtons() {
+  const newNote = document.querySelector('.new-note')
+  const save = document.querySelector('.save')
+  const cancel = document.querySelector('.cancel')
+
   newNote.remove()
   save.remove()
   cancel.remove()
