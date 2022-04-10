@@ -67,7 +67,6 @@ function saveNote(evt) { // Save note button
   addNoteToSavedList() // Saves note to sidebar
   addClickToSaveNote(note_id)
   enablePlusButton()
-
   darkThemeNewLi(note_id)
 }
 
@@ -156,7 +155,6 @@ function formateNoteBody(noteBody) {
 function closeNote() {
   const openNote = document.querySelector('.edit-note')
   const closeButton = document.querySelector('.close')
-
   openNote.remove()
   closeButton.remove()
 }
@@ -170,8 +168,6 @@ function removeNoteandButtons() {
   save.remove()
   cancel.remove()
 }
-
-
 
 function darkTheme(){
   const darkMode = document.querySelector('.light-theme')
@@ -196,7 +192,6 @@ function darkThemeNewLi(note_id) {
 
 var darkButton = document.querySelector(".theme-toggle")
 darkButton.addEventListener('change', darkTheme)
-
 
 enablePlusButton()
 
