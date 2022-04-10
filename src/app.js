@@ -77,8 +77,10 @@ function enablePlusButton() {
 
 function addNoteToSavedList() {
   const newestNote = notes[notes.length - 1]
-  const savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title}</li>`
-
+  var savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title}</li>`
+  if (newestNote.title == ''){
+    savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>Untitled Note</li>`
+  }
   notesList.insertAdjacentHTML("afterend", savedNoteTemplate)
 }
 
@@ -137,6 +139,5 @@ function removeNoteandButtons() {
   save.remove()
   cancel.remove()
 }
-
 enablePlusButton()
 
