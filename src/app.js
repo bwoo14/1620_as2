@@ -77,7 +77,7 @@ function enablePlusButton() {
 
 function addNoteToSavedList() {
   const newestNote = notes[notes.length - 1]
-  const savedNoteTemplate = `<li id=${newestNote.id}>${newestNote.title}</li>`
+  const savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title}</li>`
 
   notesList.insertAdjacentHTML("afterend", savedNoteTemplate)
 }
