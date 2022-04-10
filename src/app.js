@@ -81,6 +81,9 @@ function addNoteToSavedList() {
   if (newestNote.title == ''){
     savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>Untitled Note</li>`
   }
+  else if (newestNote.title.length >= 25) {
+    savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title.slice(0, 20)}...</li>`
+  }
   notesList.insertAdjacentHTML("afterend", savedNoteTemplate)
 }
 
