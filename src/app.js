@@ -19,7 +19,6 @@ const closeButtonTemplate = `<button class='close'>Close</button>`
 
 const notesList = document.querySelector('.notes-list')
 
-
 function openNoteSpace(evt){ // Opens a blank textarea for note taking
   
   plusButton.removeEventListener('click', openNoteSpace) // Ensures that the plus button cannot be clicked again until note saved or cancelled
@@ -36,11 +35,8 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
 }
 
 function cancelNote(evt) { // Cancel note button
-  // Removing cancel button, save button, and the note
-
   removeNoteandButtons()
-
-  plusButton.addEventListener('click', openNoteSpace) // Allows for plus button to be clicked again
+  enablePlusButton()
 
 }
 
@@ -66,9 +62,16 @@ function saveNote(evt) { // Save note button
   removeNoteandButtons()
 
   addNoteToSavedList() // Saves note to sidebar
+  addClickToSaveNote()
+  enablePlusButton()
+}
+
+function addClickToSaveNote() {
   const sidebarNote = document.getElementById(note_id)
   sidebarNote.addEventListener('click', readNote)
+}
 
+function enablePlusButton() {
   plusButton.addEventListener('click', openNoteSpace) // Allows for plus button to be clicked again
 }
 
@@ -118,6 +121,7 @@ function formateNoteBody(noteBody) {
   }
   return formattedNote
 }
+
 function closeNote() {
   const openNote = document.querySelector('.edit-note')
   const closeButton = document.querySelector('.close')
@@ -136,5 +140,5 @@ function removeNoteandButtons() {
   cancel.remove()
 }
 
-plusButton.addEventListener('click', openNoteSpace)
+enablePlusButton()
 
