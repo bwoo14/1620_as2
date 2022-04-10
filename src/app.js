@@ -41,9 +41,7 @@ function cancelNote(evt) { // Cancel note button
   const cancel = document.querySelector('.cancel')
   // Removing cancel button, save button, and the note
 
-  newNote.remove()
-  save.remove()
-  cancel.remove()
+  removeNoteandButtons()
 
   plusButton.addEventListener('click', openNoteSpace) // Allows for plus button to be clicked again
 
@@ -68,9 +66,7 @@ function saveNote(evt) { // Save note button
 
   notes.push(savedNote) // Save new note to notes list 
 
-  newNote.remove()
-  save.remove()
-  cancel.remove()
+  removeNoteandButtons()
 
   addNoteToSavedList() // Saves note to sidebar
   const sidebarNote = document.getElementById(note_id)
@@ -93,6 +89,7 @@ function readNote(evt) {
     noteBody: "",
     id: 0 
   }
+
   for (var note of notes) {
     if (note.id == parseInt(evt.target.id)) {
       noteToBeRead.title = note.title  // Saves all values from the note to a new object
@@ -122,7 +119,12 @@ function closeNote() {
 
   openNote.remove()
   closeButton.remove()
+}
 
+function removeNoteandButtons() {
+  newNote.remove()
+  save.remove()
+  cancel.remove()
 }
 
 plusButton.addEventListener('click', openNoteSpace)
