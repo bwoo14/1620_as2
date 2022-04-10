@@ -37,7 +37,6 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
 function cancelNote(evt) { // Cancel note button
   removeNoteandButtons()
   enablePlusButton()
-
 }
 
 function saveNote(evt) { // Save note button
@@ -93,11 +92,21 @@ function readNote(evt) {
   const printedNote = `<textarea class='edit-note' rows="35" cols="50">${noteToBeRead.title}${noteToBeRead.noteBody}
   </textarea>`
 
-  readNoteArea.insertAdjacentHTML("afterbegin", closeButtonTemplate)
-  readNoteArea.insertAdjacentHTML("afterbegin", printedNote)
+  if (readNoteArea.contains(document.querySelector('.edit-note'))) {
+    closeNote()
+    insertNotes(printedNote) // Closes note if a note is already inside the read-notes-area
+  }
+  else {
+    insertNotes(printedNote)
+  }
 
   const closeButton = document.querySelector('.close')
   closeButton.addEventListener('click', closeNote)
+}
+
+function insertNotes(note) {
+  readNoteArea.insertAdjacentHTML("afterbegin", closeButtonTemplate)
+  readNoteArea.insertAdjacentHTML("afterbegin", note)
 }
 
 function writeToNoteObject(clickedNote) {
@@ -142,5 +151,6 @@ function removeNoteandButtons() {
   save.remove()
   cancel.remove()
 }
+
 enablePlusButton()
 
