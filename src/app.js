@@ -23,9 +23,13 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
   
   plusButton.removeEventListener('click', openNoteSpace) // Ensures that the plus button cannot be clicked again until note saved or cancelled
 
-  writeNoteArea.insertAdjacentHTML("afterend", cancelButtonTemp)
-  writeNoteArea.insertAdjacentHTML("afterend", saveButtonTemp)
-  writeNoteArea.insertAdjacentHTML("afterend", noteTemplate)
+  if (readNoteArea.contains(document.querySelector('.edit-note'))) {
+    closeNote()
+  }
+
+  writeNoteArea.insertAdjacentHTML("afterbegin", cancelButtonTemp)
+  writeNoteArea.insertAdjacentHTML("afterbegin", saveButtonTemp)
+  writeNoteArea.insertAdjacentHTML("afterbegin", noteTemplate)
 
   cancelButton = document.querySelector('.cancel')
   cancelButton.addEventListener('click', cancelNote)
@@ -100,6 +104,14 @@ function readNote(evt) {
     insertNotes(printedNote)
   }
 
+  if (writeNoteArea.contains(document.querySelector('.new-note'))) {
+    console.log('yes')
+    removeNoteandButtons()
+  }
+  else {
+    console.log('no')
+  }
+
   const closeButton = document.querySelector('.close')
   closeButton.addEventListener('click', closeNote)
 }
@@ -151,6 +163,19 @@ function removeNoteandButtons() {
   save.remove()
   cancel.remove()
 }
+
+
+
+function dark_theme(){
+  const dark_mode = document.querySelector('.light-theme')
+  
+  return dark_mode.classList.toggle("dark-theme")
+}
+
+
+const darkButton = document.querySelector(".theme-toggle")
+darkButton.addEventListener('change', dark_theme)
+
 
 enablePlusButton()
 

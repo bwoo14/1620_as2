@@ -17,9 +17,9 @@
   --text:     var(--not-black);
 }
 
-/* .dark-theme { */
-/*   --bg-color: var(--not-grey); */
-/* } */
+.dark-theme {
+   --bg-color: var(--not-grey); 
+} 
 
 * {
   margin: 0;
