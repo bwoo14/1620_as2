@@ -19,6 +19,8 @@
 
 .dark-theme {
    --bg-color: var(--not-grey); 
+   --bg-side: var(--muted);
+   --text: var(--drk-white);
 } 
 
 * {

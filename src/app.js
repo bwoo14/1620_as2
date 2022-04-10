@@ -90,6 +90,7 @@ function addNoteToSavedList() {
   notesList.insertAdjacentHTML("afterend", savedNoteTemplate)
 }
 
+
 function readNote(evt) {
   let noteToBeRead = writeToNoteObject(evt)
   
@@ -104,11 +105,18 @@ function readNote(evt) {
     insertNotes(printedNote)
   }
 
+  clearNoteCreateArea()
+  addCloseButton()
+}
+
+function clearNoteCreateArea() {
   if (writeNoteArea.contains(document.querySelector('.new-note'))) {
     removeNoteandButtons()
     enablePlusButton()
   }
+}
 
+function addCloseButton() {
   const closeButton = document.querySelector('.close')
   closeButton.addEventListener('click', closeNote)
 }
