@@ -62,11 +62,11 @@ function saveNote(evt) { // Save note button
   removeNoteandButtons()
 
   addNoteToSavedList() // Saves note to sidebar
-  addClickToSaveNote()
+  addClickToSaveNote(note_id)
   enablePlusButton()
 }
 
-function addClickToSaveNote() {
+function addClickToSaveNote(note_id) {
   const sidebarNote = document.getElementById(note_id)
   sidebarNote.addEventListener('click', readNote)
 }
@@ -85,9 +85,7 @@ function addNoteToSavedList() {
 function readNote(evt) {
   let noteToBeRead = writeToNoteObject(evt)
   
-  const printedNote = `<textarea class='edit-note' rows="35" cols="50">
-  ${noteToBeRead.title}
-  ${noteToBeRead.noteBody}
+  const printedNote = `<textarea class='edit-note' rows="35" cols="50">${noteToBeRead.title}${noteToBeRead.noteBody}
   </textarea>`
 
   readNoteArea.insertAdjacentHTML("afterbegin", closeButtonTemplate)
@@ -115,7 +113,7 @@ function writeToNoteObject(clickedNote) {
 }
 
 function formateNoteBody(noteBody) {
-  var formattedNote = ""
+  var formattedNote = "\n"
   for (const item of noteBody) { // Places all of the items in the body list into a single string with line breaks
     formattedNote += `${item}\n ` 
   }
