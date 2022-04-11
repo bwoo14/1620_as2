@@ -95,8 +95,10 @@ function addNoteToSavedList() {
 function readNote(evt) {
   let noteToBeRead = writeToNoteObject(evt)
   
-  const printedNote = `<textarea class='edit-note' rows="35" cols="50">${noteToBeRead.title}${noteToBeRead.noteBody}
-  </textarea>`
+  //const printedNote = `<textarea class='edit-note' rows="35" cols="50">${noteToBeRead.title}${noteToBeRead.noteBody}
+  //</textarea>`
+
+  const printedNote = `<div class='edit-note'><h1 class='note-header'>${noteToBeRead.title}</h1><p class='note-text'>${noteToBeRead.noteBody}</p>`
 
   if (readNoteArea.contains(document.querySelector('.edit-note'))) {
     closeNote()
@@ -145,9 +147,9 @@ function writeToNoteObject(clickedNote) {
 }
 
 function formateNoteBody(noteBody) {
-  var formattedNote = "\n"
+  var formattedNote = ""
   for (const item of noteBody) { // Places all of the items in the body list into a single string with line breaks
-    formattedNote += `${item}\n` 
+    formattedNote += `${item}<br>`
   }
   return formattedNote
 }
