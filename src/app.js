@@ -166,24 +166,14 @@ function formateNoteBody(noteBody) {
 }
 
 function closeNote(evt) {
-  if (evt.path[2] != `<article class ='read-note-area'></article>`) {
-    currentReadNoteArea = document.querySelector('.read-note-area')
-  }
-  else {
-    currentReadNoteArea = evt.path[2]
-  }
+  currentReadNoteArea = document.querySelector('.read-note-area')
   while (currentReadNoteArea.firstChild) {
     currentReadNoteArea.removeChild(currentReadNoteArea.firstChild)
   }
 }
 
 function removeNoteandButtons(evt) {
-  if (evt.path[3] != `<article class ='write-note-area'></article>`) {
-    currentWriteNoteArea = document.querySelector('.write-note-area')
-  }
-  else {
-    currentWriteNoteArea = evt.path[3]
-  }
+  currentWriteNoteArea = document.querySelector('.write-note-area')
   while (currentWriteNoteArea.firstChild) {
     currentWriteNoteArea.removeChild(currentWriteNoteArea.firstChild)
   }
