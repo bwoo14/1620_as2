@@ -110,6 +110,7 @@ function readNote(evt) {
 
   clearNoteCreateArea()
   addCloseButton()
+  darkThemeNewNote()
 }
 
 function clearNoteCreateArea() {
@@ -175,6 +176,7 @@ function darkTheme(){
   const darkMode = document.querySelector('.light-theme')
   darkMode.classList.toggle("dark-theme")
   darkThemeLi()
+  darkThemeNote()
 }
 
 function darkThemeLi() {
@@ -189,6 +191,28 @@ function darkThemeNewLi(note_id) {
   if (darkButton1.checked) {
     itemToBeDark = document.getElementById(note_id)
     itemToBeDark.classList.toggle("saved-note-dark")
+  }
+}
+
+function darkThemeNote() {
+  const headerToBeDark = document.querySelector('.note-header')
+  const divToBeDark = document.querySelector('.edit-note')
+  const textToBeDark = document.querySelector('.note-text')
+
+  textToBeDark.classList.toggle("note-text-dark")
+  divToBeDark.classList.toggle("edit-note-dark")
+  headerToBeDark.classList.toggle("note-header-dark")
+}
+
+function darkThemeNewNote() {
+  const darkButton1 = document.querySelector('input')
+  const headerToBeDark = document.querySelector('.note-header')
+  const divToBeDark = document.querySelector('.edit-note')
+  const textToBeDark = document.querySelector('.note-text')
+  if (darkButton1.checked) {
+    textToBeDark.classList.toggle("note-text-dark")
+    divToBeDark.classList.toggle("edit-note-dark")
+    headerToBeDark.classList.toggle("note-header-dark")
   }
 }
 
