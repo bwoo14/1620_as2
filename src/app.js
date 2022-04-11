@@ -167,29 +167,17 @@ function formateNoteBody(noteBody) {
 }
 
 function closeNote() {
-  // const openNote = document.querySelector('.edit-note')
-  // const closeButton = document.querySelector('.close')
-  // const editNoteDiv = document.querySelector('.edit-note-div')
-  // const delbuttonDiv = document.querySel
-  
-  // openNote.remove()
-  // closeButton.remove()
-  // editNoteDiv.remove()
   currentReadNoteArea = document.querySelector('.read-note-area')
   while (currentReadNoteArea.firstChild) {
-    console.log(1)
     currentReadNoteArea.removeChild(currentReadNoteArea.firstChild)
   }
 }
 
 function removeNoteandButtons() {
-  const newNote = document.querySelector('.new-note')
-  const save = document.querySelector('.save')
-  const cancel = document.querySelector('.cancel')
-
-  newNote.remove()
-  save.remove()
-  cancel.remove()
+  currentWriteNoteArea = document.querySelector('.write-note-area')
+  while (currentWriteNoteArea.firstChild) {
+    currentWriteNoteArea.removeChild(currentWriteNoteArea.firstChild)
+  }
 }
 
 function darkTheme(){
