@@ -181,7 +181,7 @@ function removeNoteandButtons() {
 }
 
 function darkTheme(){
-  const darkMode = document.querySelector('.light-theme')
+  const darkMode = document.querySelector('.main-container')
   darkMode.classList.toggle("dark-theme")
   darkThemeLi()
   darkThemeNote()
@@ -211,7 +211,6 @@ function darkThemeNote() {
   divToBeDark.classList.toggle("edit-note-dark")
   headerToBeDark.classList.toggle("note-header-dark")
 }
-
 function darkThemeNewNote() {
   const darkButton1 = document.querySelector('input')
   const headerToBeDark = document.querySelector('.note-header')
@@ -223,7 +222,6 @@ function darkThemeNewNote() {
     headerToBeDark.classList.toggle("note-header-dark")
   }
 }
-
 var darkButton = document.querySelector(".theme-toggle")
 darkButton.addEventListener('change', darkTheme)
 
