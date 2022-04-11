@@ -29,7 +29,7 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
   plusButton.removeEventListener('click', openNoteSpace) // Ensures that the plus button cannot be clicked again until note saved or cancelled
 
   if (readNoteArea.contains(document.querySelector('.edit-note'))) {
-    closeNote()
+    closeNote(evt)
   }
   writeNoteArea.insertAdjacentHTML("afterbegin", createNoteDiv)
   currentCreateNoteDiv = document.querySelector(".create-note-div") // Creates a new note div
@@ -48,7 +48,7 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
 }
 
 function cancelNote(evt) { // Cancel note button
-  removeNoteandButtons()
+  removeNoteandButtons(evt)
   enablePlusButton()
 }
 
@@ -71,8 +71,7 @@ function saveNote(evt) { // Save note button
 
   notes.push(savedNote) // Save new note to notes list 
 
-  removeNoteandButtons()
-
+  removeNoteandButtons(evt)
   addNoteToSavedList() // Saves note to sidebar
   addClickToSaveNote(note_id)
   enablePlusButton()
@@ -107,20 +106,20 @@ function readNote(evt) {
   const printedNote = `<div class='edit-note'><h1 class='note-header'>${noteToBeRead.title}</h1><p class='note-text'>${noteToBeRead.noteBody}</p>`
 
   if (readNoteArea.contains(document.querySelector('.edit-note'))) {
-    closeNote()
+    closeNote(evt)
     insertNotes(printedNote) // Closes note if a note is already inside the read-notes-area
   }
   else {
     insertNotes(printedNote)
   }
-  clearNoteCreateArea()
+  clearNoteCreateArea(evt)
   addCloseButton()
   darkThemeNewNote()
 }
 
-function clearNoteCreateArea() {
+function clearNoteCreateArea(evt) {
   if (writeNoteArea.contains(document.querySelector('.new-note'))) {
-    removeNoteandButtons()
+    removeNoteandButtons(evt)
     enablePlusButton()
   }
 }
@@ -166,15 +165,25 @@ function formateNoteBody(noteBody) {
   return formattedNote
 }
 
-function closeNote() {
-  currentReadNoteArea = document.querySelector('.read-note-area')
+function closeNote(evt) {
+  if (evt.path[2] != `<article class ='read-note-area'></article>`) {
+    currentReadNoteArea = document.querySelector('.read-note-area')
+  }
+  else {
+    currentReadNoteArea = evt.path[2]
+  }
   while (currentReadNoteArea.firstChild) {
     currentReadNoteArea.removeChild(currentReadNoteArea.firstChild)
   }
 }
 
-function removeNoteandButtons() {
-  currentWriteNoteArea = document.querySelector('.write-note-area')
+function removeNoteandButtons(evt) {
+  if (evt.path[3] != `<article class ='write-note-area'></article>`) {
+    currentWriteNoteArea = document.querySelector('.write-note-area')
+  }
+  else {
+    currentWriteNoteArea = evt.path[3]
+  }
   while (currentWriteNoteArea.firstChild) {
     currentWriteNoteArea.removeChild(currentWriteNoteArea.firstChild)
   }
