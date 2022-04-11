@@ -193,21 +193,26 @@ footer p {
 .note-header {
   font-size: 20px;
   font-family: 'Libre Baskerville', sans-serif;
+  width: 50vw;
 }
 
 .note-header-dark {
   font-size: 20px;
   font-family: 'Libre Baskerville', sans-serif;
   color: var(--drk-white);
+  width: 50vw;
 }
 
 .note-text{
   font-family: 'Libre Baskerville', serif;
+  width: 50vw;
+  word-wrap: break-word;
 }
 
 .note-text-dark {
   font-family: 'Libre Baskerville', serif;
   color: var(--drk-white);
+  width: 50vw;
 }
 
 .edit-note {
@@ -226,4 +231,8 @@ footer p {
   border-width: 3px;
   padding: 10px;
   border-radius: 25px;
+}
+
+.edit-note-div {
+  max-width: 100px;
 }
