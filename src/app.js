@@ -19,6 +19,11 @@ const closeButtonTemplate = `<button class='close'>Close</button>`
 
 const notesList = document.querySelector('.notes-list')
 
+const createNoteDiv = `<div class='create-note-div'></div>`
+const editNoteDiv = `<div class='edit-note-div'></div>`
+const buttonDiv = `<div class='button-div'></div>`
+const buttonDivClose = `<div class='button-div-close'></div>`
+
 function openNoteSpace(evt){ // Opens a blank textarea for note taking
   
   plusButton.removeEventListener('click', openNoteSpace) // Ensures that the plus button cannot be clicked again until note saved or cancelled
@@ -26,10 +31,14 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
   if (readNoteArea.contains(document.querySelector('.edit-note'))) {
     closeNote()
   }
+  writeNoteArea.insertAdjacentHTML("afterbegin", createNoteDiv)
+  currentCreateNoteDiv = document.querySelector(".create-note-div") // Creates a new note div
+  currentCreateNoteDiv.insertAdjacentHTML("afterbegin", buttonDiv) //Creates a div for the save and cancel buttons
+  currentButtonDiv = document.querySelector(".button-div")
 
-  writeNoteArea.insertAdjacentHTML("afterbegin", cancelButtonTemp)
-  writeNoteArea.insertAdjacentHTML("afterbegin", saveButtonTemp)
-  writeNoteArea.insertAdjacentHTML("afterbegin", noteTemplate)
+  currentButtonDiv.insertAdjacentHTML("afterbegin", cancelButtonTemp)
+  currentButtonDiv.insertAdjacentHTML("afterbegin", saveButtonTemp)
+  currentCreateNoteDiv.insertAdjacentHTML("afterbegin", noteTemplate)
 
   cancelButton = document.querySelector('.cancel')
   cancelButton.addEventListener('click', cancelNote)
@@ -94,9 +103,6 @@ function addNoteToSavedList() {
 
 function readNote(evt) {
   let noteToBeRead = writeToNoteObject(evt)
-  
-  //const printedNote = `<textarea class='edit-note' rows="35" cols="50">${noteToBeRead.title}${noteToBeRead.noteBody}
-  //</textarea>`
 
   const printedNote = `<div class='edit-note'><h1 class='note-header'>${noteToBeRead.title}</h1><p class='note-text'>${noteToBeRead.noteBody}</p>`
 
@@ -107,7 +113,6 @@ function readNote(evt) {
   else {
     insertNotes(printedNote)
   }
-
   clearNoteCreateArea()
   addCloseButton()
   darkThemeNewNote()
@@ -126,8 +131,14 @@ function addCloseButton() {
 }
 
 function insertNotes(note) {
-  readNoteArea.insertAdjacentHTML("afterbegin", closeButtonTemplate)
-  readNoteArea.insertAdjacentHTML("afterbegin", note)
+  readNoteArea.insertAdjacentHTML("afterbegin", buttonDivClose)
+  currentBtnDiv = document.querySelector(".button-div-close")
+  readNoteArea.insertAdjacentHTML("afterbegin", editNoteDiv)
+  currentEditNoteDiv = document.querySelector(".edit-note-div")
+  
+  currentBtnDiv.insertAdjacentHTML("afterbegin", closeButtonTemplate)
+  currentEditNoteDiv.insertAdjacentHTML("afterbegin", note)
+  
 }
 
 function writeToNoteObject(clickedNote) {
@@ -156,10 +167,19 @@ function formateNoteBody(noteBody) {
 }
 
 function closeNote() {
-  const openNote = document.querySelector('.edit-note')
-  const closeButton = document.querySelector('.close')
-  openNote.remove()
-  closeButton.remove()
+  // const openNote = document.querySelector('.edit-note')
+  // const closeButton = document.querySelector('.close')
+  // const editNoteDiv = document.querySelector('.edit-note-div')
+  // const delbuttonDiv = document.querySel
+  
+  // openNote.remove()
+  // closeButton.remove()
+  // editNoteDiv.remove()
+  currentReadNoteArea = document.querySelector('.read-note-area')
+  while (currentReadNoteArea.firstChild) {
+    console.log(1)
+    currentReadNoteArea.removeChild(currentReadNoteArea.firstChild)
+  }
 }
 
 function removeNoteandButtons() {

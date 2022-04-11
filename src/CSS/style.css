@@ -216,6 +216,7 @@ footer p {
   border: solid;
   border-width: 3px;
   padding: 10px;
+  border-radius: 25px;
 }
 
 .edit-note-dark {
@@ -224,4 +225,5 @@ footer p {
   border: solid;
   border-width: 3px;
   padding: 10px;
+  border-radius: 25px;
 }
