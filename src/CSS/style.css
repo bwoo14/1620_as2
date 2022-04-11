@@ -31,13 +31,15 @@
 }
 
 .main-container {
-  height: 100vh;
+  min-height: 100vh;
+  max-height: fit-content;
   display: flex;
   font-family: 'Quicksand', sans-serif;
 }
 
 .side-note-menu {
-  height: 100%;
+  min-height: 100vh;
+  max-height: fit-content;
   width: 20rem;
   background-color: var(--bg-side);
 }
