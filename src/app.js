@@ -72,7 +72,6 @@ function saveNote(evt) { // Save note button
   addNoteToSavedList() // Saves note to sidebar
   addClickToSaveNote(note_id) // Allows the notes on side bar to be clicked
   enablePlusButton()
-  //darkThemeNewLi(note_id) // Adds dark mode to new list items
 }
 
 function removeNoteandButtons(evt) {
@@ -101,7 +100,6 @@ function readNote(evt) {
   }
   clearNoteCreateArea(evt)
   addCloseButton()
-  //darkThemeNewNote()
 }
 
 function writeToNoteObject(clickedNote) {
