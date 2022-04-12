@@ -209,6 +209,7 @@ footer p {
   display: inline-block;
   border: solid;
   border-width: 3px;
+  border-color: var(--text);
   padding: 10px;
   border-radius: 25px;
   min-height: 200px;
