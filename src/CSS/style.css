@@ -151,6 +151,7 @@ footer p {
   font-size: 16px;
   margin-right: 10px;
   font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
 }
 
 .cancel {
@@ -163,6 +164,7 @@ footer p {
   display: inline-block;
   font-size: 16px;
   font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
 }
 
 .close {
@@ -177,6 +179,7 @@ footer p {
   margin-top: 10px;
   margin-right: 10px;
   font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
 }
 
 .saved-note {
