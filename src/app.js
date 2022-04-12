@@ -27,10 +27,11 @@ const buttonDivClose = `<div class='button-div-close'></div>`
 function openNoteSpace(evt){ // Opens a blank textarea for note taking
   
   plusButton.removeEventListener('click', openNoteSpace) // Ensures that the plus button cannot be clicked again until note saved or cancelled
-
+  
   if (readNoteArea.contains(document.querySelector('.edit-note'))) {
     closeNote(evt)
   }
+  
   writeNoteArea.insertAdjacentHTML("afterbegin", createNoteDiv)
   currentCreateNoteDiv = document.querySelector(".create-note-div") // Creates a new note div
   currentCreateNoteDiv.insertAdjacentHTML("afterbegin", buttonDiv) //Creates a div for the save and cancel buttons
@@ -51,13 +52,9 @@ function cancelNote(evt) { // Cancel note button
   removeNoteandButtons(evt)
   enablePlusButton()
 }
-
 function saveNote(evt) { // Save note button
   
   const newNote = document.querySelector('.new-note')
-  const save = document.querySelector('.save')
-  const cancel = document.querySelector('.cancel')
-
   var lines = newNote.value.split('\n')  // gives all lines
   var title = lines[0] // Isolates the title
   var body = lines.slice(1) // Body of the note excluding title  
@@ -204,11 +201,13 @@ function darkThemeNewLi(note_id) {
 function darkThemeNote() {
   const headerToBeDark = document.querySelector('.note-header')
   const divToBeDark = document.querySelector('.edit-note')
-  const textToBeDark = document.querySelector('.note-text')
-
-  textToBeDark.classList.toggle("note-text-dark")
-  divToBeDark.classList.toggle("edit-note-dark")
-  headerToBeDark.classList.toggle("note-header-dark")
+  
+  if (divToBeDark !== null){
+    divToBeDark.classList.toggle("edit-note-dark")
+  }
+  if (headerToBeDark !== null) {
+    headerToBeDark.classList.toggle("note-header-dark")
+  }
 }
 function darkThemeNewNote() {
   const darkButton1 = document.querySelector('input')
