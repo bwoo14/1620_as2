@@ -218,9 +218,10 @@ footer p {
   font-size: 20px;
   font-family: 'Libre Baskerville', serif;
   background-color: var(--bg-side);
+  color: var(--text);
 } 
 
 ::placeholder {
-  color: var(--text)
+  color: var(--text);
   font-family: 'Libre Baskerville', serif;
 }
