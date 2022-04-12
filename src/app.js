@@ -143,7 +143,7 @@ function addNoteToSavedList() {
   else if (newestNote.title.length >= 25) {
     savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title.slice(0, 20)}...</li>`
   }
-  notesList.insertAdjacentHTML("afterend", savedNoteTemplate)
+  notesList.insertAdjacentHTML("afterbegin", savedNoteTemplate)
 }
 
 
