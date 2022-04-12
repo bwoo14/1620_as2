@@ -222,4 +222,5 @@ footer p {
 
 ::placeholder {
   color: var(--text)
+  font-family: 'Libre Baskerville', serif;
 }
