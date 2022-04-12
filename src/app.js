@@ -28,7 +28,7 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
   
   plusButton.removeEventListener('click', openNoteSpace) // Ensures that the plus button cannot be clicked again until note saved or cancelled
   
-  if (readNoteArea.contains(document.querySelector('.edit-note'))) {
+  if (readNoteArea.contains(document.querySelector('.edit-note'))) { // Removes notes in read-note-area 
     closeNote(evt)
   }
   
@@ -38,19 +38,19 @@ function openNoteSpace(evt){ // Opens a blank textarea for note taking
   currentButtonDiv = document.querySelector(".button-div")
 
   currentButtonDiv.insertAdjacentHTML("afterbegin", cancelButtonTemp)
-  currentButtonDiv.insertAdjacentHTML("afterbegin", saveButtonTemp)
+  currentButtonDiv.insertAdjacentHTML("afterbegin", saveButtonTemp) // Inserts buttons and empty textarea
   currentCreateNoteDiv.insertAdjacentHTML("afterbegin", noteTemplate)
 
-  cancelButton = document.querySelector('.cancel')
+  cancelButton = document.querySelector('.cancel') // adds event listener to cancel button
   cancelButton.addEventListener('click', cancelNote)
 
-  saveButton = document.querySelector('.save')
+  saveButton = document.querySelector('.save') // adds event listener to save button
   saveButton.addEventListener('click', saveNote)
 }
 
 function cancelNote(evt) { // Cancel note button
-  removeNoteandButtons(evt)
-  enablePlusButton()
+  removeNoteandButtons(evt) // Removes notes and buttons
+  enablePlusButton() //Allows plus button to be clicked again
 }
 function saveNote(evt) { // Save note button
   
@@ -70,9 +70,16 @@ function saveNote(evt) { // Save note button
 
   removeNoteandButtons(evt)
   addNoteToSavedList() // Saves note to sidebar
-  addClickToSaveNote(note_id)
+  addClickToSaveNote(note_id) // Allows the notes on side bar to be clicked
   enablePlusButton()
-  darkThemeNewLi(note_id)
+  darkThemeNewLi(note_id) // Adds dark mode to new list items
+}
+
+function removeNoteandButtons(evt) {
+  currentWriteNoteArea = document.querySelector('.write-note-area')
+  while (currentWriteNoteArea.firstChild) {
+    currentWriteNoteArea.removeChild(currentWriteNoteArea.firstChild)
+  }
 }
 
 function addClickToSaveNote(note_id) {
@@ -80,25 +87,8 @@ function addClickToSaveNote(note_id) {
   sidebarNote.addEventListener('click', readNote)
 }
 
-function enablePlusButton() {
-  plusButton.addEventListener('click', openNoteSpace) // Allows for plus button to be clicked again
-}
-
-function addNoteToSavedList() {
-  const newestNote = notes[notes.length - 1]
-  var savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title}</li>`
-  if (newestNote.title == ''){
-    savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>Untitled Note</li>`
-  }
-  else if (newestNote.title.length >= 25) {
-    savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title.slice(0, 20)}...</li>`
-  }
-  notesList.insertAdjacentHTML("afterend", savedNoteTemplate)
-}
-
-
 function readNote(evt) {
-  let noteToBeRead = writeToNoteObject(evt)
+  let noteToBeRead = writeToNoteObject(evt) // Creates an object for reading from the event
 
   const printedNote = `<div class='edit-note'><h1 class='note-header'>${noteToBeRead.title}</h1><p class='note-text'>${noteToBeRead.noteBody}</p>`
 
@@ -112,29 +102,6 @@ function readNote(evt) {
   clearNoteCreateArea(evt)
   addCloseButton()
   darkThemeNewNote()
-}
-
-function clearNoteCreateArea(evt) {
-  if (writeNoteArea.contains(document.querySelector('.new-note'))) {
-    removeNoteandButtons(evt)
-    enablePlusButton()
-  }
-}
-
-function addCloseButton() {
-  const closeButton = document.querySelector('.close')
-  closeButton.addEventListener('click', closeNote)
-}
-
-function insertNotes(note) {
-  readNoteArea.insertAdjacentHTML("afterbegin", buttonDivClose)
-  currentBtnDiv = document.querySelector(".button-div-close")
-  readNoteArea.insertAdjacentHTML("afterbegin", editNoteDiv)
-  currentEditNoteDiv = document.querySelector(".edit-note-div")
-  
-  currentBtnDiv.insertAdjacentHTML("afterbegin", closeButtonTemplate)
-  currentEditNoteDiv.insertAdjacentHTML("afterbegin", note)
-  
 }
 
 function writeToNoteObject(clickedNote) {
@@ -162,17 +129,52 @@ function formateNoteBody(noteBody) {
   return formattedNote
 }
 
+
+function enablePlusButton() {
+  plusButton.addEventListener('click', openNoteSpace) // Allows for plus button to be clicked again
+}
+
+function addNoteToSavedList() {
+  const newestNote = notes[notes.length - 1]
+  var savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title}</li>`
+  if (newestNote.title == ''){
+    savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>Untitled Note</li>`
+  }
+  else if (newestNote.title.length >= 25) {
+    savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title.slice(0, 20)}...</li>`
+  }
+  notesList.insertAdjacentHTML("afterend", savedNoteTemplate)
+}
+
+
+
+function clearNoteCreateArea(evt) {
+  if (writeNoteArea.contains(document.querySelector('.new-note'))) {
+    removeNoteandButtons(evt)
+    enablePlusButton()
+  }
+}
+
+function addCloseButton() {
+  const closeButton = document.querySelector('.close')
+  closeButton.addEventListener('click', closeNote)
+}
+
+function insertNotes(note) {
+  readNoteArea.insertAdjacentHTML("afterbegin", buttonDivClose)
+  currentBtnDiv = document.querySelector(".button-div-close")
+  readNoteArea.insertAdjacentHTML("afterbegin", editNoteDiv)
+  currentEditNoteDiv = document.querySelector(".edit-note-div")
+  
+  currentBtnDiv.insertAdjacentHTML("afterbegin", closeButtonTemplate)
+  currentEditNoteDiv.insertAdjacentHTML("afterbegin", note)
+  
+}
+
 function closeNote(evt) {
   currentReadNoteArea = document.querySelector('.read-note-area')
   while (currentReadNoteArea.firstChild) {
     currentReadNoteArea.removeChild(currentReadNoteArea.firstChild)
-  }
-}
-
-function removeNoteandButtons(evt) {
-  currentWriteNoteArea = document.querySelector('.write-note-area')
-  while (currentWriteNoteArea.firstChild) {
-    currentWriteNoteArea.removeChild(currentWriteNoteArea.firstChild)
   }
 }
 
@@ -201,7 +203,6 @@ function darkThemeNewLi(note_id) {
 function darkThemeNote() {
   const headerToBeDark = document.querySelector('.note-header')
   const divToBeDark = document.querySelector('.edit-note')
-  
   if (divToBeDark !== null){
     divToBeDark.classList.toggle("edit-note-dark")
   }

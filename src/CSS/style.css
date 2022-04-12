@@ -150,7 +150,7 @@ footer p {
   display: inline-block;
   font-size: 16px;
   margin-right: 10px;
-  font-family: 'Libre Baskerville', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .cancel {
@@ -162,7 +162,7 @@ footer p {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  font-family: 'Libre Baskerville', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .close {
@@ -176,30 +176,33 @@ footer p {
   font-size: 16px;
   margin-top: 10px;
   margin-right: 10px;
-  font-family: 'Libre Baskerville', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .saved-note {
-  font-family: 'Libre Baskerville', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   width: 150px;
+  font-size: 20px;
   color: var(--not-black);
 }
 
 .saved-note-dark {
-  font-family: 'Libre Baskerville', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   width: 150px;
+  font-size: 20px;
   color: var(--drk-white);
 }
 
+
 .note-header {
   font-size: 20px;
-  font-family: 'Libre Baskerville', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   width: 50vw;
 }
 
 .note-header-dark {
   font-size: 20px;
-  font-family: 'Libre Baskerville', sans-serif;
+  font-family:  'Quicksand', sans-serif;
   color: var(--drk-white);
   width: 50vw;
 }
