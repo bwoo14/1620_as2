@@ -11,7 +11,7 @@ const createNoteArea = document.querySelector('.create-note-area')
 const writeNoteArea = document.querySelector('.write-note-area')
 const readNoteArea = document.querySelector('.read-note-area')
 
-const noteTemplate = `<textarea class='new-note' rows="35" cols="50" placeholder = "1) Title \n2) Body"></textarea>`
+const noteTemplate = `<textarea class='new-note' rows="10" cols="75" placeholder = "1) Title \n2) Body"></textarea>`
 
 const cancelButtonTemp =  `<button class='cancel'>Cancel</button>`
 const saveButtonTemp = `<button class='save'>Save</button>`
@@ -141,7 +141,7 @@ function addNoteToSavedList() {
     savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>Untitled Note</li>`
   }
   else if (newestNote.title.length >= 25) {
-    savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title.slice(0, 20)}...</li>`
+    savedNoteTemplate = `<li class='saved-note' id=${newestNote.id}>${newestNote.title.slice(0, 16)}...</li>`
   }
   notesList.insertAdjacentHTML("afterbegin", savedNoteTemplate)
 }

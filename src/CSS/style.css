@@ -201,14 +201,18 @@ footer p {
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
   width: 50vw;
+  word-wrap: break-word;
 }
+
 
 .note-header-dark {
   font-size: 20px;
   font-family:  'Quicksand', sans-serif;
   color: var(--not-white);
   width: 50vw;
+  word-wrap: break-word;
 }
+
 
 .note-text{
   font-family: 'Libre Baskerville', serif;
@@ -241,3 +245,8 @@ footer p {
   border-radius: 25px;
   min-height: 200px;
 }
+
+.new-note {
+  font-size: 20px;
+  font-family: 'Libre Baskerville', serif;
+} 
