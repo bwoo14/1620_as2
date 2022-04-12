@@ -20,7 +20,7 @@
 .dark-theme {
    --bg-color: var(--not-grey); 
    --bg-side: var(--muted);
-   --text: var(--drk-white);
+   --text: var(--not-white);
 } 
 
 * {
@@ -141,7 +141,7 @@ footer p {
 }
 
 .save {
-  background-color: #9ccfd8; /* Green */
+  background-color: #9ccfd8;
   border: none;
   color: #191724;
   padding: 15px 32px;
@@ -193,7 +193,7 @@ footer p {
   font-family: 'Quicksand', sans-serif;
   width: 150px;
   font-size: 20px;
-  color: var(--drk-white);
+  color: var(--not-white);
 }
 
 
@@ -206,7 +206,7 @@ footer p {
 .note-header-dark {
   font-size: 20px;
   font-family:  'Quicksand', sans-serif;
-  color: var(--drk-white);
+  color: var(--not-white);
   width: 50vw;
 }
 
@@ -218,7 +218,7 @@ footer p {
 
 .note-text-dark {
   font-family: 'Libre Baskerville', serif;
-  color: var(--drk-white);
+  color: var(--not-white);
   width: 50vw;
 }
 
