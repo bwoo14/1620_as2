@@ -186,58 +186,26 @@ footer p {
   font-family: 'Quicksand', sans-serif;
   width: 150px;
   font-size: 20px;
-  color: var(--not-black);
+  color: var(--text);
 }
-
-.saved-note-dark {
-  font-family: 'Quicksand', sans-serif;
-  width: 150px;
-  font-size: 20px;
-  color: var(--not-white);
-}
-
 
 .note-header {
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
   width: 50vw;
   word-wrap: break-word;
+  color: var(--text);
 }
-
-
-.note-header-dark {
-  font-size: 20px;
-  font-family:  'Quicksand', sans-serif;
-  color: var(--not-white);
-  width: 50vw;
-  word-wrap: break-word;
-}
-
 
 .note-text{
   font-family: 'Libre Baskerville', serif;
   width: 50vw;
   word-wrap: break-word;
-}
-
-.note-text-dark {
-  font-family: 'Libre Baskerville', serif;
-  color: var(--not-white);
-  width: 50vw;
+  color: var(--text);
 }
 
 .edit-note {
-  background-color: #f2e9e1;
-  display: inline-block;
-  border: solid;
-  border-width: 3px;
-  padding: 10px;
-  border-radius: 25px;
-  min-height: 200px;
-}
-
-.edit-note-dark {
-  background-color: var(--muted);
+  background-color: var(--bg-side);
   display: inline-block;
   border: solid;
   border-width: 3px;
@@ -249,4 +217,9 @@ footer p {
 .new-note {
   font-size: 20px;
   font-family: 'Libre Baskerville', serif;
+  background-color: var(--bg-side);
 } 
+
+::placeholder {
+  color: var(--text)
+}

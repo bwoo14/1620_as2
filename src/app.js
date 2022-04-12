@@ -72,7 +72,7 @@ function saveNote(evt) { // Save note button
   addNoteToSavedList() // Saves note to sidebar
   addClickToSaveNote(note_id) // Allows the notes on side bar to be clicked
   enablePlusButton()
-  darkThemeNewLi(note_id) // Adds dark mode to new list items
+  //darkThemeNewLi(note_id) // Adds dark mode to new list items
 }
 
 function removeNoteandButtons(evt) {
@@ -101,7 +101,7 @@ function readNote(evt) {
   }
   clearNoteCreateArea(evt)
   addCloseButton()
-  darkThemeNewNote()
+  //darkThemeNewNote()
 }
 
 function writeToNoteObject(clickedNote) {
@@ -181,46 +181,8 @@ function closeNote(evt) {
 function darkTheme(){
   const darkMode = document.querySelector('.main-container')
   darkMode.classList.toggle("dark-theme")
-  darkThemeLi()
-  darkThemeNote()
 }
 
-function darkThemeLi() {
-  const darkModeList = document.querySelectorAll('.saved-note')
-  for (const darkLi of darkModeList) {
-    darkLi.classList.toggle("saved-note-dark")
-  }
-}
-
-function darkThemeNewLi(note_id) {
-  const darkButton1 = document.querySelector('input')
-  if (darkButton1.checked) {
-    itemToBeDark = document.getElementById(note_id)
-    itemToBeDark.classList.toggle("saved-note-dark")
-  }
-}
-
-function darkThemeNote() {
-  const headerToBeDark = document.querySelector('.note-header')
-  const divToBeDark = document.querySelector('.edit-note')
-  if (divToBeDark !== null){
-    divToBeDark.classList.toggle("edit-note-dark")
-  }
-  if (headerToBeDark !== null) {
-    headerToBeDark.classList.toggle("note-header-dark")
-  }
-}
-function darkThemeNewNote() {
-  const darkButton1 = document.querySelector('input')
-  const headerToBeDark = document.querySelector('.note-header')
-  const divToBeDark = document.querySelector('.edit-note')
-  const textToBeDark = document.querySelector('.note-text')
-  if (darkButton1.checked) {
-    textToBeDark.classList.toggle("note-text-dark")
-    divToBeDark.classList.toggle("edit-note-dark")
-    headerToBeDark.classList.toggle("note-header-dark")
-  }
-}
 var darkButton = document.querySelector(".theme-toggle")
 darkButton.addEventListener('change', darkTheme)
 
